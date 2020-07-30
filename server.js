@@ -1,7 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const Workout = require("./models/user");
+const Workout = require("./models/workout");
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExertion", {
 
 //routes
 
-app.post("/api/workouts", ({ body }, res) => {
+app.post("/workouts", ({ body }, res) => {
   Workout.create(body)
     .then(dbUser => {
       res.json(dbUser);
@@ -31,6 +31,16 @@ app.post("/api/workouts", ({ body }, res) => {
       res.json(err);
     });
 });
+
+app.get("/", (req, res) => {
+	res.send(index.html);
+});
+
+// app.get("/workout", (req, res) => {
+// 	res.send(exercise.html);
+// });
+
+
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
