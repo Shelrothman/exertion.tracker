@@ -1,40 +1,30 @@
-/** @format */
+module.exports = {
+};
 
-const mongoose = require("mongoose");
+// Resistance WOrkout Example
+// {
+//     day: new Date(new Date().setDate(new Date().getDate() - 10)),
+//     exercises: [
+//       {
+//         type: "resistance",
+//         name: "Bicep Curl",
+//         duration: 20,
+//         weight: 100,
+//         reps: 10,
+//         sets: 4
+//       }
+//     ]
+//   }
 
-const Schema = mongoose.Schema;
-
-const workoutSchema = new Schema({
-	// CODE HERE
-	username: {
-		type: String,
-		trim: true,
-		required: "Create a username!",
-	},
-	password: {
-		type: String,
-		trim: true,
-		required: true,
-		min: 6,
-	},
-	email: {
-		type: String,
-		match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
-		required: true,
-    unique: true,
-    validate: {
-      validator: function(v){
-          return this.model('User').findOne({ email: v }).then(user => !user)
-      },
-      message: props => `${props.value} is already used by another user`
-  },
-	},
-	userCreated: {
-		type: Date,
-		default: Date.now,
-	},
-});
-
-const Workout = mongoose.model("User", workoutSchema);
-
-module.exports = Workout;
+// cardio workout example
+// {
+//     day: new Date(new Date().setDate(new Date().getDate() - 7)),
+//     exercises: [
+//       {
+//         type: "cardio",
+//         name: "Running",
+//         duration: 25,
+//         distance: 4
+//       }
+//     ]
+//   }
