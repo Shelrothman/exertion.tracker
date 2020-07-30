@@ -1,35 +1,37 @@
-// const express = require("express");
-// const logger = require("morgan");
-// const mongoose = require("mongoose");
-// const User = require("./models/user");
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const Workout = require("./models/user");
 
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-// const app = express();
+const app = express();
 
-// app.use(logger("dev"));
+app.use(logger("dev"));
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExample", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-// });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExertion", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
-// app.post("/users", ({ body }, res) => {
-//   User.create(body)
-//     .then(dbUser => {
-//       res.json(dbUser);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+//routes
 
-// app.listen(PORT, () => {
-//   console.log(`App running on port ${PORT}!`);
-// });
+app.post("/api/workouts", ({ body }, res) => {
+  Workout.create(body)
+    .then(dbUser => {
+      res.json(dbUser);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
+});
