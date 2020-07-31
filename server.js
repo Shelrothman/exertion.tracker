@@ -2,6 +2,8 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const Workout = require("./models/workout");
+const addApiRoutes = require("./routes/api-routes");
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,21 +22,23 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExertion", {
   useCreateIndex: true,
 });
 
-//routes
+//routes set up
+addApiRoutes(app)
 
-app.post("/workouts", ({ body }, res) => {
-  Workout.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
 
-app.get("/", (req, res) => {
-	res.send(index.html);
-});
+// app.post("/workouts", ({ body }, res) => {
+//   Workout.create(body)
+//     .then(dbUser => {
+//       res.json(dbUser);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
+
+// app.get("/", (req, res) => {
+// 	res.send(index.html);
+// });
 
 // app.get("/workout", (req, res) => {
 // 	res.send(exercise.html);

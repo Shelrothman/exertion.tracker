@@ -2,7 +2,7 @@ const API = {
   async getLastWorkout() {
     let res;
     try {
-      res = await fetch("/api/workouts");
+      res = await fetch("/api/workouts"); 
     } catch (err) {
       console.log(err)
     }
@@ -38,7 +38,7 @@ const API = {
   async getWorkoutsInRange() {
     const res = await fetch(`/api/workouts/range`);
     const json = await res.json();
-
+  // this one is a "get" because of fetch
     return json;
   },
 };
