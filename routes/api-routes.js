@@ -29,7 +29,7 @@ module.exports = (app) => {
 	});
 
 	//adding an excercise to a workout
-	app.put("/api/workouts/:id", (req, res) => {
+	app.put("/api/workouts/:id", ({body, params}, res) => {
 		Workout.findByIdAndUpdate(
 			params.id,
 			{ $push: { exercises: body } },
