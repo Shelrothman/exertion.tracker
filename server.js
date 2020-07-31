@@ -4,12 +4,14 @@ const mongoose = require("mongoose");
 const addApiRoutes = require("./routes/api-routes");
 const addHtmlRoutes = require("./routes/html-routes");
 
+const compression = require("compression");
+
 const PORT = process.env.PORT || 3000;
 
 
 const app = express();
 
-
+app.use(compression());
 
 // middleware
 app.use(logger("dev"));
