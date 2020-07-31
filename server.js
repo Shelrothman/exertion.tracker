@@ -7,6 +7,7 @@ const addHtmlRoutes = require("./routes/html-routes");
 
 const PORT = process.env.PORT || 3000;
 
+
 const app = express();
 
 app.use(logger("dev"));
@@ -18,6 +19,7 @@ app.use(express.static("public"));
 
 
 // connecting to database in mongoose
+// providing the or clause so it will work on Heroku
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -27,24 +29,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 //routes set up
 addApiRoutes(app)
 addHtmlRoutes(app)
-
-// app.post("/workouts", ({ body }, res) => {
-//   Workout.create(body)
-//     .then(dbUser => {
-//       res.json(dbUser);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
-// app.get("/", (req, res) => {
-// 	res.send(index.html);
-// });
-
-// app.get("/workout", (req, res) => {
-// 	res.send(exercise.html);
-// });
 
 
 
