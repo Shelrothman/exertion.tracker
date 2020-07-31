@@ -1,9 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const Workout = require("./models/workout");
+// const Workout = require("./models/workout");
 const addApiRoutes = require("./routes/api-routes");
-
+const addHtmlRoutes = require("./routes/html-routes");
 
 const PORT = process.env.PORT || 3000;
 
@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 
 //routes set up
 addApiRoutes(app)
-
+addHtmlRoutes(app)
 
 // app.post("/workouts", ({ body }, res) => {
 //   Workout.create(body)
