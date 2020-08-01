@@ -25,7 +25,7 @@ A workout tracker that uses a Mongo database with a Mongoose schema and handles 
 * Start by running `npm init` in the terminal
 * Next install dependencies with the command: `npm i`
 * Then, start the app with typing `npm start` into the terminal.
-* View in localhost, port 300
+* View in localhost, port 3000
 * Either add to a workout or create a new one
 * Add as many exercises as you like
 * View your weekly stats by clicking `Dashboard` in the navbar
